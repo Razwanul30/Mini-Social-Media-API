@@ -28,7 +28,6 @@ A simple social media backend built with Node.js, Express, MongoDB, Mongoose, JW
 
 * Like a Post
 * Unlike a Post
-* View Users Who Liked a Post
 
 ---
 
@@ -47,20 +46,20 @@ A simple social media backend built with Node.js, Express, MongoDB, Mongoose, JW
 
 ## Installation
 
-Clone the repository:
+### Clone Repository
 
 ```bash
 git clone <repository-url>
 cd server
 ```
 
-Install dependencies:
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
-Create a `.env` file:
+### Create .env File
 
 ```env
 PORT=5000
@@ -68,13 +67,13 @@ MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 ```
 
-Run the server:
+### Run Server
 
 ```bash
 npm run dev
 ```
 
-Server URL:
+Server runs on:
 
 ```txt
 http://localhost:5000
@@ -86,178 +85,68 @@ http://localhost:5000
 
 ### Authentication
 
-#### Register User
-
-```http
-POST /api/auth/register
-```
-
-Body:
-
-```json
-{
-  "name": "Rizwan",
-  "email": "rizwan@gmail.com",
-  "password": "123456"
-}
-```
-
----
-
-#### Login User
-
-```http
-POST /api/auth/login
-```
-
-Body:
-
-```json
-{
-  "email": "rizwan@gmail.com",
-  "password": "123456"
-}
-```
-
----
+| Method | Endpoint           |
+| ------ | ------------------ |
+| POST   | /api/auth/register |
+| POST   | /api/auth/login    |
 
 ### Posts
 
-#### Create Post
-
-```http
-POST /api/posts
-```
-
-Headers:
-
-```txt
-Authorization: Bearer <token>
-```
-
-Body:
-
-```json
-{
-  "content": "My first post"
-}
-```
-
----
-
-#### Get All Posts
-
-```http
-GET /api/posts
-```
-
----
-
-#### Update Post
-
-```http
-PUT /api/posts/:id
-```
-
-Headers:
-
-```txt
-Authorization: Bearer <token>
-```
-
-Body:
-
-```json
-{
-  "content": "Updated content"
-}
-```
-
----
-
-#### Delete Post
-
-```http
-DELETE /api/posts/:id
-```
-
-Headers:
-
-```txt
-Authorization: Bearer <token>
-```
-
----
+| Method | Endpoint       |
+| ------ | -------------- |
+| POST   | /api/posts     |
+| GET    | /api/posts     |
+| PUT    | /api/posts/:id |
+| DELETE | /api/posts/:id |
 
 ### Comments
 
-#### Add Comment
-
-```http
-POST /api/posts/:id/comment
-```
-
-Headers:
-
-```txt
-Authorization: Bearer <token>
-```
-
-Body:
-
-```json
-{
-  "text": "Nice post!"
-}
-```
-
----
+| Method | Endpoint               |
+| ------ | ---------------------- |
+| POST   | /api/posts/:id/comment |
 
 ### Likes
 
-#### Toggle Like
-
-```http
-POST /api/posts/:id/like
-```
-
-Headers:
-
-```txt
-Authorization: Bearer <token>
-```
+| Method | Endpoint            |
+| ------ | ------------------- |
+| POST   | /api/posts/:id/like |
 
 ---
 
 ## Project Structure
 
 ```txt
-server
+server/
 │
-├── models
+├── config/
+│   └── db.js
+│
+├── controllers/
+│   ├── authController.js
+│   └── postController.js
+│
+├── middleware/
+│   └── authMiddleware.js
+│
+├── models/
 │   ├── User.js
 │   └── Post.js
 │
-├── routes
+├── routes/
 │   ├── authRoutes.js
 │   └── postRoutes.js
 │
-├── middleware
-│   └── authMiddleware.js
-│
-├── config
-│   └── db.js
-│
 ├── .env
-├── server.js
-└── package.json
+├── .gitignore
+├── package.json
+└── server.js
 ```
 
 ---
 
-# Author
+## Author
 
-## Md. Razwanul Haque
-### Begum Rokeya University, Rangpur
+**Md. Razwanul Haque**
+Begum Rokeya University, Rangpur
 
-Built while learning the MERN Stack and backend development.
+Built while learning the MERN Stack and Backend Development.
