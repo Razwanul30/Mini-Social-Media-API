@@ -8,8 +8,11 @@ const createPost = async (req, res) => {
       content,
       author: req.user.userId,
     });
+    const populatedPost = await Post.findById(post._id)
+  .populate("author", "name email");
 
-    res.status(201).json(post);
+    res.status(201).json(populatedPost);
+    
   } catch (error) {
     res.status(500).json({
       message: error.message,
